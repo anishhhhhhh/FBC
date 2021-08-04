@@ -1,5 +1,5 @@
-import React from "react";
-import { StyleSheet, Text, View, Button, Image } from "react-native";
+import React, { useState } from "react";
+import { StyleSheet, Text, View, Button, Image, TextInput } from "react-native";
 // import {AppLoading} from "expo"
 import { useFonts, Inter_900Black } from "@expo-google-fonts/inter";
 
@@ -20,8 +20,19 @@ const SignInstyles = StyleSheet.create({
     resizeMode: "contain",
   },
   MainText: {
-    fontSize: 20,
+    fontSize: 23,
     fontWeight: "bold",
+  },
+  LoginInputContainer: {
+    width: "75%",
+  },
+  input: {
+    height: 40,
+    marginTop: 20,
+    borderWidth: 0,
+    paddingBottom: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: "lightgrey",
   },
 });
 
@@ -41,11 +52,25 @@ export const SignIn = ({ navigation }: SignInProps) => {
         style={SignInstyles.MainImage}
         source={require("../assets/Login.png")}
       />
-      <Text style={SignInstyles.MainText}>Login to your account</Text>
-      <Button
-        title="Sign Up"
-        onPress={() => navigation.push("CreateAccount")}
-      />
+      <View style={SignInstyles.LoginInputContainer}>
+        <Text style={SignInstyles.MainText}>Login to your account</Text>
+        <TextInput
+          style={SignInstyles.input}
+          placeholder="Email"
+          // onChangeText={onChangeText}
+          // value={text}
+        />
+        <TextInput
+          style={SignInstyles.input}
+          placeholder="Password"
+          // onChangeText={onChangeText}
+          // value={text}
+        />
+        <Button
+          title="Sign Up"
+          onPress={() => navigation.push("CreateAccount")}
+        />
+      </View>
     </View>
   );
 };
